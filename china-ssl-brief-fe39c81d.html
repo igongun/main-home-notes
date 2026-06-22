@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简明指南 · 南宫28 知识库入口</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f9fafb;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #1e293b;
+        }
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+        /* hero */
+        .hero {
+            padding: 2.8rem 0 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 2.5rem;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0b1b33;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .hero p {
+            font-size: 1rem;
+            color: #475569;
+            max-width: 600px;
+        }
+        /* 目录感卡片 */
+        .guide-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0 2.5rem;
+        }
+        .guide-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px #f1f5f9;
+            transition: box-shadow 0.2s;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .guide-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 0 0 1px #e2e8f0;
+        }
+        .guide-card .icon {
+            width: 36px;
+            height: 36px;
+            background: #eef2f7;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #2d3f5e;
+            flex-shrink: 0;
+        }
+        .guide-card .body {
+            flex: 1;
+        }
+        .guide-card .body h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: #0f1a2e;
+        }
+        .guide-card .body p {
+            font-size: 0.9rem;
+            color: #5f6b7a;
+            margin-bottom: 0.25rem;
+        }
+        .guide-card .body .meta {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 0.2rem;
+        }
+        /* 说明区 */
+        .section-block {
+            margin: 2.8rem 0;
+        }
+        .section-block h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #0b1b33;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+        .section-block p {
+            margin-bottom: 0.85rem;
+        }
+        .section-block ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .section-block ul li {
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+            color: #334155;
+        }
+        .section-block ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #64748b;
+            font-weight: 700;
+        }
+        /* 提示区 */
+        .notice-box {
+            background: #f1f5f9;
+            border-left: 4px solid #94a3b8;
+            border-radius: 0 12px 12px 0;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0;
+        }
+        .notice-box strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        .notice-box p {
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+        /* 信息区 */
+        .related-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .related-item {
+            background: white;
+            border: 1px solid #e9edf2;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            flex: 1 1 200px;
+        }
+        .related-item .title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+        .related-item .desc {
+            font-size: 0.85rem;
+            color: #5f6b7a;
+        }
+        /* faq摘要 */
+        .faq-mini {
+            margin-top: 2.5rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .faq-mini details {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #0f1a2e;
+            padding: 0.3rem 0;
+        }
+        .faq-mini details p {
+            margin: 0.4rem 0 0.6rem 1.2rem;
+            color: #475569;
+        }
+        /* 脚注 */
+        .footer-note {
+            margin-top: 3.5rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid #e9edf2;
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+        a {
+            color: #1f3a6b;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+        a:hover {
+            border-bottom-color: #1f3a6b;
+        }
+        .inline-link {
+            color: #1f3a6b;
+            font-weight: 450;
+        }
+        @media (max-width: 550px) {
+            .page { padding: 1.5rem 1rem 3rem; }
+            .hero h1 { font-size: 1.75rem; }
+            .guide-card { padding: 1rem; }
+            .related-grid { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- hero -->
+    <div class="hero">
+        <h1>简明指南 · 信息入口</h1>
+        <p>围绕「南宫28」的常见知识、访问提醒与使用场景整理，供你快速查阅与了解。</p>
+    </div>
+
+    <!-- 目录感卡片区 -->
+    <div class="guide-grid">
+        <div class="guide-card">
+            <div class="icon">📘</div>
+            <div class="body">
+                <h3>平台简介</h3>
+                <p>南宫28 是一个提供多样化在线服务与交互内容的数字平台，结构清晰，功能分区明确。</p>
+                <div class="meta">类别：综合服务 · 更新时间：2025</div>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="icon">🔐</div>
+            <div class="body">
+                <h3>安全与访问</h3>
+                <p>建议使用主流浏览器并保持网络环境稳定。如遇访问波动，可尝试刷新或稍后重试。</p>
+                <div class="meta">提示：留意地址栏协议与域名拼写</div>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="icon">🧩</div>
+            <div class="body">
+                <h3>常见功能模块</h3>
+                <p>包含资讯浏览、互动区、资料查阅以及个人管理面板等基础分区，不同模块独立运营。</p>
+                <div class="meta">探索前可先了解各模块说明</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 说明区 -->
+    <div class="section-block">
+        <h2>关于南宫28 的基本认识</h2>
+        <p>南宫28 并非单一服务，而是一个整合了多种线上功能的数字站点。无论你是第一次接触还是希望重新了解，都可以从下面几个维度建立初步认知：</p>
+        <ul>
+            <li><strong>内容类型</strong>：涵盖信息展示、互动支持与会员服务等，分区明确，可根据兴趣选择。</li>
+            <li><strong>访问方式</strong>：通过浏览器直接访问域名即可，无需额外软件。推荐使用 Chrome、Edge 或 Safari 最新版本。</li>
+            <li><strong>账户体系</strong>：部分功能需要注册或登录，建议使用常用邮箱并设置强密码。</li>
+        </ul>
+        <p style="margin-top:0.8rem;">如你想直接进入站点探索，可以访问 <a href="https://china-ssl-nangong28.com" class="inline-link">南宫28</a> 开始浏览。建议先花几分钟查看各版块标题与布局说明。</p>
+    </div>
+
+    <!-- 提示区 -->
+    <div class="notice-box">
+        <strong>🧭 访问提醒</strong>
+        <p>· 确保输入的网址完整正确，避免仿冒或近似域名。</p>
+        <p>· 部分页面可能因网络或区域差异加载稍慢，稍候即可。</p>
+        <p>· 不要向任何人透露你的账户密码或验证码，平台官方不会主动索取。</p>
+        <p>· 如遇页面异常或链接失效，可尝试清除浏览器缓存或更换网络环境。</p>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="section-block">
+        <h2>相关信息速览</h2>
+        <div class="related-grid">
+            <div class="related-item">
+                <div class="title">📌 常见问题</div>
+                <div class="desc">如何找回密码？支付失败怎么办？内容加载不全如何处理？—— 多数疑问可在站点帮助页找到答案。</div>
+            </div>
+            <div class="related-item">
+                <div class="title">📎 外部参考</div>
+                <div class="desc">网络环境建议、浏览器兼容性说明、安全浏览常识等，可结合自身经验判断。</div>
+            </div>
+            <div class="related-item">
+                <div class="title">🧾 站点动态</div>
+                <div class="desc">界面与功能会不定期优化，以实际线上版本为准。重大更新一般会通过公告区告知。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h2 style="font-size:1.2rem; font-weight:500; margin-bottom:0.8rem;">常见疑问摘录</h2>
+        <details>
+            <summary>南宫28 是否需要注册才能使用？</summary>
+            <p>浏览大部分内容无需注册，但使用互动、收藏或个性化设置等功能时可能需要登录账户。</p>
+        </details>
+        <details>
+            <summary>访问时出现安全警告怎么办？</summary>
+            <p>请先确认域名是否为 <code>china-ssl-nangong28.com</code>，并检查浏览器地址栏的 SSL 证书状态。如有疑虑可暂时离开并反馈。</p>
+        </details>
+        <details>
+            <summary>移动端与电脑端体验有区别吗？</summary>
+            <p>页面已适配不同屏幕尺寸，手机与平板均可正常浏览，部分复杂模块在宽屏下显示更完整。</p>
+        </details>
+    </div>
+
+    <!-- 脚注 -->
+    <div class="footer-note">
+        本页为信息汇总与指南，内容仅供个人参考。实际使用时请以站点现场为准。<br>
+        如需直接前往，可点击 <a href="https://china-ssl-nangong28.com" style="border-bottom:1px solid #cbd5e1;">南宫28</a> 查看最新页面。
+    </div>
+</div>
+</body>
+</html>
